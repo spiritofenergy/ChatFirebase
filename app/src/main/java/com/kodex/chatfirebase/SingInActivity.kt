@@ -14,12 +14,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFro
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kodex.chatfirebase.databinding.ActivityMainBinding
 import com.kodex.chatfirebase.databinding.ActivitySingInBinding
 
 class SingInActivity : AppCompatActivity() {

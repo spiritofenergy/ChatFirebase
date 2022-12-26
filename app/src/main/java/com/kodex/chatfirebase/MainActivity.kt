@@ -2,6 +2,7 @@ package com.kodex.chatfirebase
 
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -20,7 +21,7 @@ import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRcView() = with(binding){
             adapter = UserAdapter()
             rcView.layoutManager = LinearLayoutManager(this@MainActivity)
-        rcView.adapter = adapter
+            rcView.adapter = adapter
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
@@ -63,7 +64,8 @@ class MainActivity : AppCompatActivity() {
         dRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = ArrayList<User>()
-              for (s in snapshot.children ){
+                Log.d("MyLog", "List: $list")
+              for (s in snapshot.children){
                     val user = s.getValue(User::class.java)
                   if(user !== null)list.add(user)
               }
