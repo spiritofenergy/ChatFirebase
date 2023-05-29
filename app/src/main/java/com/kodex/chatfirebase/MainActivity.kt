@@ -28,13 +28,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         auth = Firebase.auth
         setUpActionBar()
 
-        val database = Firebase.database("https://chatfirebase-e00a0-default-rtdb.europe-west1.firebasedatabase.app")
-        val myRef = database.getReference("message")
+        val database = Firebase.database
+        val myRef = database.getReference("message").child("branch").child("two")
         binding.bSend.setOnClickListener {
-            myRef.child(myRef.push().key ?: "Empty").setValue(User(auth.currentUser?.displayName, binding.editMessage.text.toString()))
+            myRef.child(myRef.push().key ?: "Empty")
+                .setValue(User(auth.currentUser?.displayName,
+                   // auth.currentUser?.photoUrl.toString(),
+                    binding.editMessage.text.toString()))
+            Log.d("Photo", auth.currentUser?.photoUrl.toString() )
         }
         onChangeListener(myRef)
         initRcView()
@@ -45,8 +50,9 @@ class MainActivity : AppCompatActivity() {
             rcView.layoutManager = LinearLayoutManager(this@MainActivity)
             rcView.adapter = adapter
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu,menu)
+       menuInflater.inflate(R.menu.main_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -54,9 +60,7 @@ class MainActivity : AppCompatActivity() {
         if (item.itemId == R.id.sign_out){
             auth.signOut()
             finish()
-            Toast.makeText(this,
-                "Вы вышли из аккаунта",
-                Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Вы вышли из аккаунта", Toast.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
     }

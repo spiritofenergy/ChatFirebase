@@ -14,8 +14,8 @@
 
     <EditText
         android:id="@+id/edit_message"
-        android:layout_width="399dp"
-        android:layout_height="91dp"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
         android:backgroundTint="@color/w_teal_700"
         android:ems="10"
         android:inputType="textPersonName"
@@ -30,7 +30,7 @@
         android:id="@+id/bSend"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/teal_700"
+        android:background="@drawable/round_button"
         android:shadowColor="@color/teal_700"
         android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,6 @@
         android:id="@+id/rcView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:rotationX="-4"
         app:layout_constraintBottom_toTopOf="@+id/edit_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ChatFirebase</string>
+    <string name="name">Name</string>
+    <string name="message">Message</string>
 </resources>

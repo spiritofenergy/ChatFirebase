@@ -49,6 +49,8 @@ class SingInActivity : AppCompatActivity() {
         Toast.makeText(this,
             "Вы уже зарегистрированы!", Toast.LENGTH_LONG).show();
     }
+
+    //Выбор акаунта
     private fun getClient(): GoogleSignInClient{
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -57,6 +59,7 @@ class SingInActivity : AppCompatActivity() {
             .build()
         return GoogleSignIn.getClient(this, gso)
     }
+
     private fun singInWithGoogle(){
         val signInClient = getClient()
         launcher.launch(signInClient.signInIntent)
@@ -68,7 +71,7 @@ class SingInActivity : AppCompatActivity() {
                 Log.d("CheckData", "Google singIn done")
                 checkAuthState()
                 Toast.makeText(this,
-                    "Вы успешно зарегистрированы!", Toast.LENGTH_LONG).show();
+                    "Вы успешно зарегистрированы!", Toast.LENGTH_LONG).show()
             }else{
                 Log.d("CheckData", "Google singIn Error")
             }
